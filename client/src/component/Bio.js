@@ -12,6 +12,16 @@ const [occupation,setOccupation]=useState("programmer for a web design company")
 const[religion,setReligion]=useState("Christian, but lost faith in God as a teenager")
 const[meeting,setMeeting]=useState("is wondering if there is a higher power and if it can benefit ");
 
+const [isCheckedLocation, setIsCheckedLocation] = useState(true);
+
+const[isCheckedSchool,setIsCheckedSchool]=useState(true)
+
+const[isCheckedOccuption,setIsCheckedoccuption]=useState(true)
+
+const[isCheckedReligion,setIsCheckedReligion]=useState(true)
+
+const [isCheckedreason, setIsCheckedReason] = useState(true);
+
 const handleInputName=(e)=>{
   setName(e.target.value)
 }
@@ -86,6 +96,25 @@ const RandomReligion=()=>{
     setMeeting(e.target.value)
   }
 
+  const changeLocation = () => {
+    setIsCheckedLocation(!isCheckedLocation);
+  };
+
+  const changeSchool=()=>{
+    setIsCheckedSchool(!isCheckedSchool)
+  }
+
+  const ChangeOccuption = () => {
+    setIsCheckedoccuption(!isCheckedOccuption);
+  };
+
+  const ChangeReligion=()=>{
+    setIsCheckedReligion(!isCheckedReligion)
+  }
+
+  const ChangeReason = () => {
+    setIsCheckedReason(!isCheckedreason);
+  };
 
   return (
     <div className="App">
@@ -103,14 +132,27 @@ const RandomReligion=()=>{
          </select>
          <button onClick={RandomName}>Random name</button>
        </div>
+       
+       
        <div className='box'>
-          <input type="checkbox"></input>
+          <input type="checkbox"
+          value="false"
+          checked={isCheckedLocation}
+          onChange={changeLocation}
+          ></input>
           <label>Location</label>
           <input type="text" value={location} onChange={handleLocation}></input>
           <button onClick={RandomLocation}>Random Location</button>
        </div>
+
+
        <div className='box'>
-        <input type="checkbox"></input>
+        <input type="checkbox"
+        value="false"
+        checked={isCheckedSchool}
+        onChange={changeSchool}
+        
+        ></input>
         <label>School</label>
         <input type="text" value={school} onchange={handleSchool}></input>
         <button onClick={RandomSchool}>Random School</button>
@@ -120,15 +162,24 @@ const RandomReligion=()=>{
         <button onClick={RandomMajor}>Random Major</button>
        </div>
        
+
        <div className='box'>
-            <input type="checkbox"></input>
+            <input type="checkbox"
+            value="false"
+            checked={isCheckedOccuption}
+           onChange={ChangeOccuption}
+            ></input>
             <label>Occupation</label>
             <input type="text" value={occupation} onChange={handleOccupation}></input>
             <button onClick={RandomOccupation}>Random Occupation</button>
        </div>
 
 <div className='box'>
-  <input type="checkbox"></input>
+  <input type="checkbox"
+   value="false"
+   checked={isCheckedReligion}
+   onChange={ChangeReligion}
+  ></input>
   <label>Religious Background</label>
   <br/>
 <textarea value={religion} onChange={handleReligion} style={{width:"400px" ,height:"90px"}}></textarea>
@@ -137,7 +188,11 @@ const RandomReligion=()=>{
 </div>
 
 <div className='box'>
-  <input type="checkbox"></input>
+  <input type="checkbox"
+  value="false"
+  checked={isCheckedreason}
+  onChange={ChangeReason}
+  ></input>
   <label >Reason for meeting with missionaries</label>
   <textarea className='textarea' value={meeting} onChange={handleMeeting}></textarea>
 
@@ -153,6 +208,14 @@ const RandomReligion=()=>{
 
 </div>
 
+      </div>
+
+      <div className="result" >
+            <h2 className="box">Result</h2>
+
+            <div className="box">
+
+            </div>
       </div>
 
     </div>
