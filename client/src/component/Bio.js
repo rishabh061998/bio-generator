@@ -213,8 +213,13 @@ const RandomReligion=()=>{
       <div className="right" >
             <h2 className="box">Result</h2>
 
-            <div className="box">
-          {name} {isCheckedLocation  ? `is from the ${location}`:null} 
+            <div className="box" style={{fontSize:"20px"}}>
+          {name} {isCheckedLocation  ? `is from the ${location}`:null} .
+          {isCheckedSchool ? ` ${gender=="male" ? "He":"She"} is studying ${stream} at ${school}`:null} . {isCheckedOccuption ? `${gender =="male" ? "His":'Her'} currently works as a ${occupation} at his school`: null}. 
+
+           {isCheckedReligion ? `${gender == "male" ? "He":"She"} was raised ${religion}`:null}.
+
+          {gender=="male" ? "He":"She"} {isCheckedreason? ` ${meeting}`:null}
             </div>
       </div>
 
