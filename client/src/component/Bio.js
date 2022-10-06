@@ -43,7 +43,7 @@ const handleLocation=(e)=>{
 }
 
 const RandomLocation=()=>{
-  let randomlocation=["Durgapur","Kolkata","Texas","Panjim"]
+  let randomlocation=["Chongqing, China","Provo, UT","Alberta, Canada","Rural West Tennessee"]
   setLocation(randomlocation[Math.floor(Math.random()*4)])
  
 
@@ -210,11 +210,11 @@ const RandomReligion=()=>{
 
       </div>
 
-      <div className="result" >
+      <div className="right" >
             <h2 className="box">Result</h2>
 
             <div className="box">
-
+          {name} {isCheckedLocation  ? `is from the ${location}`:null} 
             </div>
       </div>
 
