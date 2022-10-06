@@ -1,6 +1,7 @@
 import react,{useState} from "react"
 import './bio.css';
 
+
 const Bio=()=> {
 
 const [name,setName]=useState("Rishabh")
@@ -11,6 +12,7 @@ const [stream, setStream] = useState("Chemistry");
 const [occupation,setOccupation]=useState("programmer for a web design company")
 const[religion,setReligion]=useState("Christian, but lost faith in God as a teenager")
 const[meeting,setMeeting]=useState("is wondering if there is a higher power and if it can benefit ");
+const[image,setimage]=useState("./menslogo.png");
 
 const [isCheckedLocation, setIsCheckedLocation] = useState(true);
 
@@ -116,12 +118,34 @@ const RandomReligion=()=>{
     setIsCheckedReason(!isCheckedreason);
   };
 
+
+  const photoUpload=(e)=>{
+    const filereader=new FileReader()
+    const file = e.target.files[0];
+    filereader.onloadend = () => {
+      setimage(filereader.result)
+      this.setState({
+        file: file,
+        imagePreviewUrl: filereader.result
+      });
+    }
+    filereader.readAsDataURL(file);
+  }
+
   return (
     <div className="App">
     <h1 className="heading">Bio Generator</h1>
     <div className="container">
       <div className='option'>
        <h2 className="box">Options</h2>
+
+       <div className="box">
+           
+           <label>Profile photo</label>
+         <input type="file" onChange={photoUpload}></input>
+         </div>
+
+
        <div className="box">
          <label>Name</label>
          <input type="text" placeholder="Enter Name" value={name} onChange={handleInputName}></input>
@@ -212,6 +236,10 @@ const RandomReligion=()=>{
 
       <div className="right" >
             <h2 className="box">Result</h2>
+
+            <div className="imagediv">
+          {image?<img src={image} alt="profile logo" />:null}
+          </div>
 
             <div className="box" style={{fontSize:"20px"}}>
           {name} {isCheckedLocation  ? `is from the ${location}`:null} .
